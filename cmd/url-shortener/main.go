@@ -5,6 +5,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
+	"net/http"
 	"os"
 	"url-shortener/internal/config"
 	mwLogger "url-shortener/internal/http-server/middleware/logger"
@@ -38,6 +39,8 @@ func main() {
 		log.Error("failed to init storage", sl.Err(err))
 		os.Exit(1)
 	}
+
+	_ = storage
 
 	router := chi.NewRouter()
 
